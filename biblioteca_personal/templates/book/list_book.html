@@ -1,0 +1,89 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% load static %}
+
+<div class="container">
+
+  <!-- Input SEARCH -->
+  {% include 'search.html' %}
+  <br>
+
+  <div class="row gx-5">
+    <h5>List books</h5>
+  </div>
+
+  <!-- Divs buttons -->
+  <div class="container ">
+
+    <div class="row gx-5">
+      <div class="col">
+        <a href="{% url 'home:add_book' %}" type="button" class="btn btn-outline-secondary">
+          <img src="{% static 'img/add.png' %}" alt="" width="25">
+          Add new book
+        </a>
+      </div>
+
+      <div class="col">
+        <a href="{% url 'home:report_status' %}" type="button" class="btn btn-light">
+          View reports
+        </a>
+        <!-- <a href="{% url 'author:list_author' %}" type="button" class="btn btn-light">
+          View list authors
+        </a> -->
+        <!-- <a href="{% url 'category:list_category' %}" type="button" class="btn btn-light">
+          List categories
+        </a> -->
+      </div>
+    </div>
+
+  </div>
+
+  <br>
+
+  <!-- Table content books -->
+  <table class="table table-hover">
+
+    <thead style="text-align: center;">
+      <tr>
+        <th scope="col">Nro.</th>
+        <th scope="col">Title </th>
+
+        <th scope="col">Author</th>
+        <th scope="col">Category</th>
+
+        <th scope="col">View detail</th>
+      </tr>
+    </thead>
+
+    <tbody>
+
+      {% for item in page_obj %}
+      <tr>
+        <td scope="row"> {{forloop.counter}} </td>
+        <a href="#" type="button" class="">
+          <td> {{ item.title }} </td>
+        </a>
+
+        <td> {{ item.id_author }} </td>
+        <td> {{ item.id_category }} </td>
+
+        <td style="text-align: center;">
+          <a href="{% url 'home:detail_book' item.pk %}" type="button" id="url_button_view" class="">
+            <img src="{% static 'img/view-details.png' %}" alt="Logo" width="30" height="30"
+              class="d-inline-block align-text-top ">
+          </a>
+        </td>
+
+      </tr>
+      {% endfor %}
+
+    </tbody>
+  </table>
+
+  <!-- PAGINATION -->
+  {% include 'pagination.html' %}
+
+</div>
+
+{% endblock %}

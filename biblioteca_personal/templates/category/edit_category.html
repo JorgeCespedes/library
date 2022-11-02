@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="container">
+    <div class="card" style="width: 18rem;">
+
+        <div class="card-body">
+            <h5 class="card-title">
+                <a href="{% url 'category:list_category' %}" type="button" class="btn btn-dark">
+                    View list category
+                </a>
+            </h5>
+
+            <form action="" method="post">
+                {% csrf_token %}
+
+                {% for item in category_form %}
+
+                <div class="input-group mb-3">
+                    {{ item }}
+                </div>
+
+                {% endfor %}
+
+                <div class="input-group mb-3">
+                    <button class="btn btn-outline-secondary" type="submit" value="Update">
+                        Update category
+                    </button>
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

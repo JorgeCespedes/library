@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% load static %}
+
+<div class="container">
+
+    <h5>List category</h5>
+
+    <a href="{% url 'category:add_category' %}" type="button" class="btn btn-outline-secondary">
+      Add new category
+    </a>
+
+    <table class="table table-hover">
+
+      <thead>
+        <tr>
+          <th scope="col">Nro.</th>
+          <th scope="col">Categories</th>
+          <th scope="col" colspan="2">Actions</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        {% for item in categories %}
+        <tr>
+          <td scope="row"> {{forloop.counter}} </td>
+          <td> {{ item.category }} </td>
+          <td>
+            <!-- Buton EDITING -->
+            <a href="{% url 'category:edit_category' item.pk %}" type="button" class="">
+              <img src="{% static 'img/editing.png' %}" alt="Logo" width="30" height="30"
+                class="d-inline-block align-text-top">
+            </a>
+          </td>
+          <td>
+            <!-- Buton DELETE -->
+            <!-- <a href="{% url 'category:delete_category' item.pk %}" type="button" class="">
+              <img src="{% static 'img/delete.png' %}" alt="Logo" width="30" height="30"
+                class="d-inline-block align-text-top">
+            </a> -->
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="container">
+    <div class="row">
+        <div class="card" style="width: 20rem;">
+
+            <h5>Add new author</h5>
+
+            <h5 class="card-header">
+                <a href="{% url 'author:list_author' %}" type="button" class="btn btn-dark">
+                    View list author
+                </a>
+            </h5>
+
+            <div class="card-body">
+
+                <form action="" method="post">
+                    {% csrf_token %}
+
+                    <table>
+                        {{ form.as_table }}
+                    </table>
+                </br>
+                    <div class="input-group mb-3">
+                        <button class="btn btn-outline-secondary" type="submit" value="Add">
+                            Save author
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

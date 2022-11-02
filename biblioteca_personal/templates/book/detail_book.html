@@ -1,0 +1,115 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+{% load static %}
+
+<div class="container">
+    <div class="row">
+
+        <h5>Detail book</h5>
+
+        <div class="card" style="width: 25rem;">
+            <h5 class="card-header">
+                <a href="{% url 'home:list_book' %}" type="button" class="btn btn-dark">
+                    View list book
+                </a>
+            </h5>
+
+            <img src="" class="card-img-top" alt="">
+            <div class="card-body">
+                <div class="row g-0">
+                    <div class="col-md-8">
+                        <h4 class="card-title">
+                            {{ book_detail.title }}
+                        </h4>
+                    </div>
+                    <div class="col-md-4">
+                        <li class="list-group-item" style="text-align: right;">
+                            {% if rating == 1 %}
+                            <span> &#9734; </span>
+
+                            {% elif rating == 2 %}
+                            <span> &#9734; </span>
+                            <span> &#9734; </span>
+
+                            {% elif rating == 3 %}
+                            <span> &#9734; </span>
+                            <span> &#9734; </span>
+                            <span> &#9734; </span>
+
+                            {% elif rating == 4 %}
+                            <span> &#9734; </span>
+                            <span> &#9734; </span>
+                            <span> &#9734; </span>
+                            <span> &#9734; </span>
+
+                            {% elif rating == 5 %}
+                            <span> &#9734; </span>
+                            <span> &#9734; </span>
+                            <span> &#9734; </span>
+                            <span> &#9734; </span>
+                            <span> &#9734; </span>
+
+                            {% elif rating == 5 %}
+                            <span> &#9734; </span>
+                            <span> &#9734; </span>
+                            <span> &#9734; </span>
+                            <span> &#9734; </span>
+                            <span> &#9734; </span>
+                            {% elif rating == ' ' %}
+                            <span> &#9734; </span>
+                            {% endif %}
+                        </li>
+                    </div>
+                    <li class="list-group-item" style="text-align: right;">
+                        <p>
+                            {% if price == 0 %}
+                            <strong></strong>
+                            {% else %}
+                            S/.<strong>{{ book_detail.price }}</strong>
+                            {% endif %}
+                        </p>
+                    </li>
+                    <li class="list-group-item" style="text-align: right;">
+                        {{ book_detail.status }}
+                    </li>
+
+                </div>
+                <p class="card-text">
+                    {{ book_detail.comment }}
+                </p>
+            </div>
+
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">{{ book_detail.id_author }}</li>
+                <li class="list-group-item">In my library: <strong> {{ book_detail.librero }} </strong></li>
+                <li class="list-group-item">{{ book_detail.id_category }}</li>
+            </ul>
+
+            <!-- Boton EDITING -->
+            <div class="card-body" style="text-align: right;">
+                <a href="{% url 'home:edit_book' book_detail.pk  %}" type="button" class="" data-toggle="tooltip"
+                    data-mdb-placement="top" title="Edit">
+                    <img src="{% static 'img/editing.png' %}" alt="Logo" width="30" height="30"
+                        class="d-inline-block align-text-top">
+                </a>
+
+                <!-- Boton DELETE -->
+                <a href="{% url 'home:delete_book' book_detail.pk %}" type="button" id=""
+                    onclick="return confirmar('Do you want to delete?')" class="">
+                    <img src="{% static 'img/delete.png' %}" alt="Logo" width="30" height="30"
+                        class="d-inline-block align-text-top ">
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script language="JavaScript">
+    function confirmar(mensaje) {
+        return confirm(mensaje);
+    } 
+</script>
+
+{% endblock %}

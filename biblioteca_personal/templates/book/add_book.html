@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+{% load static %}
+
+
+<div class="container">
+    <div class="row">
+        <div class="card" style="width: 35rem;">
+
+            <h5>Add new book</h5>
+            <div class="row">
+                <h5 class="card-header">
+                    <a href="{% url 'home:list_book' %}" type="button" class="btn btn-dark">
+                        View list book
+                    </a>
+                </h5>
+            </div>
+            
+            <form action="" method="post" class="uniForm">
+                {% csrf_token %}
+
+                <table>
+                    {{ form.as_table }}
+                </table>
+
+                <div class="input-group mb-3">
+                    <button class="btn btn-outline-secondary" type="submit" value="Add">
+                        Save book
+                    </button>
+                </div>
+
+            </form>
+        </div>
+    </div>
+
+</div>
+
+
+{% endblock %}

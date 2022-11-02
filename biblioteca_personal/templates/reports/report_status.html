@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="container">
+
+    <div class="row">
+
+        <h5> Number of cases </h5>
+        <table class="table table-hover table-bordered">
+
+            <thead style="text-align: center;">
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Cases</th>
+                    <th scope="col">Number cases</th>
+                    <th scope="col">%</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="table-active">
+                    <th scope="row">1</th>
+                    <td>Books all</td>
+                    <td>{{ book_count_all }}</td>
+                    <td>{{ book_count_all_percent }} %</td>
+                </tr>
+                <tr>
+                    <th scope="row">2</th>
+                    <td>Books reads</td>
+                    <td>{{ read_count }} </td>
+                    <td>{{ read_count_percent }} %</td>
+                </tr>
+                <tr>
+                    <th scope="row">3</th>
+                    <td>Books no reads</td>
+                    <td>{{ noread_count }}</td>
+                    <td>{{ noread_count_percent }} %</td>
+                </tr>
+                <tr>
+                    <th scope="row">4</th>
+                    <td>Books reading</td>
+                    <td>{{ reading_count }}</td>
+                    <td>{{ reading_count_percent }} %</td>
+                </tr>
+            </tbody>
+        </table>
+
+    </div>
+
+
+
+
+
+    {% comment %}
+    <div>
+        {% for item in book_read %}
+        <p>
+            {{ item }}
+        </p>
+        {% endfor %}
+    </div>
+    {% endcomment %}
+
+</div>
+
+{% endblock %}
